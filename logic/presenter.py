@@ -17,7 +17,7 @@ class Presenter(Tk):
         super(Presenter, self).__init__()
         self.__memory: float = 0
         self.resizable(False, False)
-        self.__operation: Operation = None
+        self.__operation: Operation = Operation.NONE
         self.title("Калькулятор")
         self.memory_field = Label(
             text="",
@@ -146,8 +146,6 @@ class Presenter(Tk):
                 try:
                     self.memory = self.__perform_operation()
                     self.input_field.delete(0, "end")
-                except TypeError:
-                    messagebox.showwarning("Вводить можно только цифры")
                 except ZeroDivisionError:
                     self.memory = None
                     self.memory_field["text"] = "ОШИБКА"
@@ -162,8 +160,6 @@ class Presenter(Tk):
                 try:
                     self.memory = self.__perform_operation()
                     self.input_field.delete(0, "end")
-                except TypeError:
-                    messagebox.showwarning("Вводить можно только цифры")
                 except ZeroDivisionError:
                     self.memory = None
                     self.memory_field["text"] = "ОШИБКА"
@@ -178,8 +174,6 @@ class Presenter(Tk):
                 try:
                     self.memory = self.__perform_operation()
                     self.input_field.delete(0, "end")
-                except TypeError:
-                    messagebox.showwarning("Вводить можно только цифры")
                 except ZeroDivisionError:
                     self.memory = None
                     self.memory_field["text"] = "ОШИБКА"
@@ -194,8 +188,6 @@ class Presenter(Tk):
                 try:
                     self.memory = self.__perform_operation()
                     self.input_field.delete(0, "end")
-                except TypeError:
-                    messagebox.showwarning("Вводить можно только цифры")
                 except ZeroDivisionError:
                     self.memory = None
                     self.memory_field["text"] = "ОШИБКА"
@@ -205,21 +197,18 @@ class Presenter(Tk):
         self.operation = Operation.DIVIDE
 
     def calculate(self):
+        print(f'{self.operation=}')
         if self.input_field.get():
             if self.operation == Operation.NONE:
-                return
-            if self.memory is not None:
+                print('code needed')
+                self.memory = float(self.input_field.get())
+                self.input_field.delete(0, "end")
+            else:
                 try:
                     self.memory = self.__perform_operation()
                     self.input_field.delete(0, "end")
-                except TypeError:
-                    messagebox.showwarning("Вводить можно только цифры")
                 except ZeroDivisionError:
                     self.memory = None
-            else:
-                self.memory = float(self.input_field.get())
-                self.input_field.delete(0, "end")
-            print("SELF.OPERATION = OPERATION.NONE")
             self.operation = Operation.NONE
 
     def __perform_operation(self):
@@ -265,5 +254,5 @@ class Presenter(Tk):
             return True
 
         return (
-            char in "0123456789.-" and new_val.count(".") < 2 and new_val.find("-") < 1
+                char in "0123456789.-" and new_val.count(".") < 2 and new_val.find("-") < 1
         )
