@@ -1,3 +1,5 @@
+import pytest
+
 from logic.presenter import Presenter, Operation
 import logic.main
 
@@ -63,6 +65,7 @@ def test_invalid_input(invalid_presenter_input_fixture):
     assert result == out
 
 
+# @pytest.mark.skip(reason="So annoying")
 def test_presenter():
     logic.main.main()
 
