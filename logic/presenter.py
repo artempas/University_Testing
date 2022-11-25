@@ -197,10 +197,10 @@ class Presenter(Tk):
         self.operation = Operation.DIVIDE
 
     def calculate(self):
-        print(f'{self.operation=}')
+        print(f"{self.operation=}")
         if self.input_field.get():
             if self.operation == Operation.NONE:
-                print('code needed')
+                print("code needed")
                 self.memory = float(self.input_field.get())
                 self.input_field.delete(0, "end")
             else:
@@ -254,5 +254,5 @@ class Presenter(Tk):
             return True
 
         return (
-                char in "0123456789.-" and new_val.count(".") < 2 and new_val.find("-") < 1
+            char in "0123456789.-" and new_val.count(".") < 2 and new_val.find("-") < 1
         )

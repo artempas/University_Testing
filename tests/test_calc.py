@@ -5,12 +5,16 @@ from pytest_bdd import scenario, given, when, then, parsers
 def test_sum(calc_fixture):
     pass
 
+
 @scenario("test_calc.feature", "Zero division")
 def test_zero_div(calc_fixture):
     pass
+
+
 @scenario("test_calc.feature", "Enter value and press equal")
 def test_val_eq(calc_fixture):
     pass
+
 
 @scenario("test_calc.feature", "Zero division with other operation")
 def test_zero_div_op(calc_fixture):
@@ -20,6 +24,7 @@ def test_zero_div_op(calc_fixture):
 @scenario("test_calc.feature", "Consecutive operations")
 def test_consec(calc_fixture):
     pass
+
 
 @scenario("test_calc.feature", "Consecutive zero division")
 def test_consec_zero_div(calc_fixture):
@@ -113,9 +118,9 @@ def step_impl(calc_fixture):
 
 @then("I get nothing")
 def step_impl(calc_fixture):
-    assert '' == calc_fixture.memory_field["text"]
+    assert "" == calc_fixture.memory_field["text"]
 
 
 @then("I get error")
 def step_impl(calc_fixture):
-    assert 'ОШИБКА' == calc_fixture.memory_field["text"]
+    assert "ОШИБКА" == calc_fixture.memory_field["text"]
