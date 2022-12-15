@@ -97,7 +97,6 @@ def test_fucking_spravochnik():
     browser.get('https://telspravki.info/rossiya/moskovskaya-oblast/stolitsa-rossii/moskva')
     browser.find_element(By.ID,'phone').send_keys('6147748'+Keys.RETURN)
     try:
-        browser.find_element(By.CLASS_NAME,'fio').text=='Кисенко Ю.В.'
-        assert True
+        assert browser.find_element(By.CLASS_NAME,'fio').text=='Кисенко Ю.В.'
     except NoSuchElementException:
         assert False
